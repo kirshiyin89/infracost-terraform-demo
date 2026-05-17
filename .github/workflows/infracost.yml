@@ -45,7 +45,6 @@ jobs:
           infracost diff \
             --path=plan.json \
             --format=json \
-            --compare-to-usage-file="" \
             --out-file=/tmp/infracost.json
 
       - name: Post Infracost comment
