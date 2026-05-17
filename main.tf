@@ -23,9 +23,10 @@ resource "aws_instance" "web" {
 
   tags = {
     Name       = "demo-web-server"
-    Env        = "Stage"
-    Team       = "platform"
-    CostCenter = "engineering"
+    Environment        = "Stage"
+    root_block_device.Environment = "Stage"
+    root_block_device.Service = "AWS"
+    Service = "AWS"
   }
 }
 
@@ -37,4 +38,12 @@ resource "aws_db_instance" "postgres" {
   username       = "admin"
   password       = "notreal123"
   skip_final_snapshot = true
+
+  tags = {
+    Name       = "demo-web-server"
+    Environment        = "Stage"
+    Team       = "platform"
+    Service = "DB"
+    CostCenter = "engineering"
+  }
 }
