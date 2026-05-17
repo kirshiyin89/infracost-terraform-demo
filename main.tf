@@ -19,7 +19,7 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t3.micro"
+  instance_type = "t3.xlarge"
 
   tags = {
     Name = "demo-web-server"
@@ -28,7 +28,7 @@ resource "aws_instance" "web" {
 
 resource "aws_db_instance" "postgres" {
   engine         = "postgres"
-  instance_class = "db.t3.medium"
+  instance_class = "db.r5.2xlarge"
   allocated_storage = 100
   db_name        = "appdb"
   username       = "admin"
