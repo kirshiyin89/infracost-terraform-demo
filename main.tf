@@ -22,7 +22,10 @@ resource "aws_instance" "web" {
   instance_type = "t4g.xlarge"
 
   tags = {
-    Name = "demo-web-server"
+    Name       = "demo-web-server"
+    Env        = "Stage"
+    Team       = "platform"
+    CostCenter = "engineering"
   }
 }
 
