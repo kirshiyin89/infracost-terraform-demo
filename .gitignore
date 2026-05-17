@@ -1,0 +1,5 @@
+*.binary
+*.json
+*.html
+.terraform/
+.terraform.lock.hcl
