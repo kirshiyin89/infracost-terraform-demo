@@ -26,6 +26,12 @@ resource "aws_instance" "web" {
     Environment = "Stage"
     Service     = "web"
   }
+  root_block_device {
+    tags = {
+      Environment = "Stage"
+      Service     = "web"
+    }
+  }
 }
 
 resource "aws_db_instance" "postgres" {
