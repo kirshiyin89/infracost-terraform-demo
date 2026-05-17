@@ -19,19 +19,33 @@ provider "aws" {
 
 resource "aws_instance" "web" {
   ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t3.micro"
+  instance_type = "t4g.xlarge"
 
   tags = {
-    Name = "demo-web-server"
+    Name        = "demo-web-server"
+    Environment = "Stage"
+    Service     = "web"
+  }
+  root_block_device {
+    tags = {
+      Environment = "Stage"
+      Service     = "web"
+    }
   }
 }
 
 resource "aws_db_instance" "postgres" {
   engine         = "postgres"
-  instance_class = "db.t3.medium"
+  instance_class = "db.r7i.2xlarge"
   allocated_storage = 100
   db_name        = "appdb"
   username       = "admin"
   password       = "notreal123"
   skip_final_snapshot = true
+
+  tags = {
+    Name        = "demo-postgres"
+    Environment = "Stage"
+    Service     = "database"
+  }
 }
