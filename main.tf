@@ -22,11 +22,9 @@ resource "aws_instance" "web" {
   instance_type = "t4g.xlarge"
 
   tags = {
-    Name       = "demo-web-server"
-    Environment        = "Stage"
-    root_block_device.Environment = "Stage"
-    root_block_device.Service = "AWS"
-    Service = "AWS"
+    Name        = "demo-web-server"
+    Environment = "Stage"
+    Service     = "web"
   }
 }
 
@@ -40,10 +38,8 @@ resource "aws_db_instance" "postgres" {
   skip_final_snapshot = true
 
   tags = {
-    Name       = "demo-web-server"
-    Environment        = "Stage"
-    Team       = "platform"
-    Service = "DB"
-    CostCenter = "engineering"
+    Name        = "demo-postgres"
+    Environment = "Stage"
+    Service     = "database"
   }
 }
